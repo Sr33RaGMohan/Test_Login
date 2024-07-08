@@ -16,6 +16,12 @@ const ResultPage: React.FC = () => {
     }
   }, [results, navigate]);
 
+
+  const handleExit = (): void => {
+      navigate('/');
+    
+  };
+
   if (!results) {
     return <div>No results available. Please take the test first.</div>;
   }
@@ -125,7 +131,7 @@ const ResultPage: React.FC = () => {
               urna ut mattis vestibulum non. Vel sed scelerisque leo quis in mattis ultrices aliquam. Justo,Lorem ivp
             </div>
           </div>
-          <button className="exit-button">Exit</button>
+          <button className="exit-button" onClick={handleExit}>Exit</button>
         </div>
       </main>
       <footer>

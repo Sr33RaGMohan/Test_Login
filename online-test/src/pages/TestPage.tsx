@@ -187,10 +187,9 @@ const TestPage: React.FC = () => {
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>Confirm Submission</h2>
-            <p>Are you sure you want to submit your answers and move to the results page?</p>
+            <p>Are you sure you want to submit the exam ?</p>
             <div className="modal-buttons">
-              <button onClick={() => setIsModalOpen(false)}>Cancel</button>
-              <button onClick={confirmSubmit}>Submit</button>
+              <button onClick={confirmSubmit}>Continue</button>
             </div>
           </div>
         </div>

@@ -1,134 +1,174 @@
-/* TestPage.css */
 .test-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-  }
-  
-  header, footer {
-    background-color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .exam-category {
-    font-size: 16px;
-  }
-  
-  .header-icons .icon {
-    margin-left: 10px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  main {
-    display: flex;
-    flex-grow: 1;
-    padding: 20px;
-  }
-  
-  .question-container {
-    flex: 2;
-    padding-right: 20px;
-  }
-  
-  .timer {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: right;
-  }
-  
-  .question-content h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .question-content p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .option {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .exit-button, .next-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    width:auto !important;
-    cursor: pointer;
-  }
-  
-  .exit-button {
-    background-color: #f0f0f0;
-    color: #000;
-  }
-  
-  .next-button {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .notepad {
-    flex: 1;
-    border-left: 1px solid #e0e0e0;
-    padding-left: 20px;
-  }
-  
-  .notepad h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .notepad-placeholder {
-    font-size: 14px;
-    color: #aaa;
-    border: 1px dashed #aaa;
-    padding: 10px;
-    height: 200px;
-    overflow-y: auto;
-  }
-  
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #e0e0e0;
-    padding: 10px 20px;
-  }
-  
-  .social-icons .icon {
-    margin-right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .option-label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Add spacing between items if needed */
-  }
-  .option-label input[type="checkbox"] {
-    margin-right: 8px; /* Add spacing between the checkbox and the label text */
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
 
-  option-list{
-    list-style-type: none;
-  }
+header, footer {
+  background-color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.exam-category {
+  font-size: 16px;
+}
+
+.header-icons .icon {
+  margin-left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.question-container {
+  flex: 2;
+  padding-right: 20px;
+}
+
+.timer {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.question-content h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.question-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.option-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Add spacing between items if needed */
+}
+
+.option-label input[type="checkbox"] {
+  margin-right: 8px; /* Add spacing between the checkbox and the label text */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  width: auto !important;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.next-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: auto !important;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.notepad {
+  flex: 1;
+  border-left: 1px solid #e0e0e0;
+  padding-left: 20px;
+}
+
+.notepad h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.notepad-placeholder {
+  font-size: 14px;
+  color: #aaa;
+  border: 1px dashed #aaa;
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  padding: 10px 20px;
+}
+
+.social-icons .icon {
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  align-items: center;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background-color: #007bff;
+  color: white;
+}
