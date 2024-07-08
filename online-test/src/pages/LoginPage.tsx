@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
-import '../css/login.css';
+import '../css/LoginPage.css';
 import LoginPage from '../assets/loginPage.png'
 
 const AuthForm = () => {

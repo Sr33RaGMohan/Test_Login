@@ -3,7 +3,6 @@ import { useAppContext } from '../context/AppContext';
 import { fetchQuestions, Question } from '../utils/fetchQuestions';
 import '../css/TestPage.css';
 import { useNavigate } from 'react-router-dom';
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 
 interface UserAnswers {
   [key: number]: string[];
@@ -17,8 +16,8 @@ const TestPage: React.FC = () => {
   const [userAnswers, setUserAnswers] = useState<UserAnswers>({});
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [totalTimeTaken, setTotalTimeTaken] = useState<number>(0);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  const {isOpen, onOpen, onClose} = useDisclosure();
 
   useEffect(() => {
     const loadQuestions = async () => {
@@ -88,7 +87,7 @@ const TestPage: React.FC = () => {
   };
 
   const handleSubmit = (): void => {
-    onOpen();
+    setIsModalOpen(true);
   };
 
   const confirmSubmit = (): void => {
@@ -102,7 +101,7 @@ const TestPage: React.FC = () => {
       timeTaken: formatTime(totalTimeTaken),
     };
     setResults(results);
-    onClose();
+    setIsModalOpen(false);
     navigate('/results');
   };
 
@@ -131,7 +130,7 @@ const TestPage: React.FC = () => {
           <div className="question-content">
             <h2>Question {currentQuestionIndex + 1} / {questions.length}</h2>
             <p>{questions[currentQuestionIndex].question}</p>
-            <ul>
+            <ul className='option-list'>
               {questions[currentQuestionIndex].options.map((option) => (
                 <li key={option.id}>
                   <label>
@@ -184,22 +183,18 @@ const TestPage: React.FC = () => {
         </div>
       </footer>
       
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalContent>
-          <ModalHeader className="flex flex-col gap-1">Confirm Submission</ModalHeader>
-          <ModalBody>
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Confirm Submission</h2>
             <p>Are you sure you want to submit your answers and move to the results page?</p>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="danger" variant="light" onPress={onClose}>
-              Cancel
-            </Button>
-            <Button color="primary" onPress={confirmSubmit}>
-              Submit
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+            <div className="modal-buttons">
+              <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+              <button onClick={confirmSubmit}>Submit</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
