@@ -1,62 +1,65 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { fetchQuestions, Question } from '../utils/fetchQuestions';
-import '../css/TestPage.css'; // Import your CSS file
+import '../css/TestPage.css';
 import { useNavigate } from 'react-router-dom';
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+
+interface UserAnswers {
+  [key: number]: string[];
+}
 
 const TestPage: React.FC = () => {
-  const { category,  setResults } = useAppContext(); // Include setCategory from context
+  const { category, setResults } = useAppContext();
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(300); // Example 5-minute timer for each question
-  const [userAnswers, setUserAnswers] = useState<{ [key: number]: string[] }>({});
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [timeLeft, setTimeLeft] = useState<number>(300);
+  const [userAnswers, setUserAnswers] = useState<UserAnswers>({});
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const [totalTimeTaken, setTotalTimeTaken] = useState(0);
+  const [totalTimeTaken, setTotalTimeTaken] = useState<number>(0);
   const navigate = useNavigate();
-
+  const {isOpen, onOpen, onClose} = useDisclosure();
 
   useEffect(() => {
-    const fetchedQuestions = fetchQuestions(category);
-    setQuestions(fetchedQuestions);
+    const loadQuestions = async () => {
+      const fetchedQuestions = await fetchQuestions(category);
+      setQuestions(fetchedQuestions);
+    };
+    loadQuestions();
+    startTimer();
   }, [category]);
 
   useEffect(() => {
-    if (questions.length > 0) {
-      startTimer();
-    }
     return () => stopTimer();
-  }, [currentQuestionIndex]);
+  }, []);
 
-  const startTimer = () => {
+  const startTimer = (): void => {
     stopTimer();
     timerRef.current = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev > 0) return prev - 1;
-        return 0;
-      });
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
       setTotalTimeTaken((prev) => prev + 1);
     }, 1000);
   };
 
-  const stopTimer = () => {
+  const stopTimer = (): void => {
     if (timerRef.current) clearInterval(timerRef.current);
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = (): void => {
     if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setTimeLeft(300); // Reset the timer for the next question
+      setCurrentQuestionIndex((prev) => prev + 1);
+      setTimeLeft(300);
     }
   };
 
-  const handlePreviousQuestion = () => {
+  const handlePreviousQuestion = (): void => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setTimeLeft(300); // Reset the timer for the previous question
+      setCurrentQuestionIndex((prev) => prev - 1);
+      setTimeLeft(300);
     }
   };
 
-  const handleAnswerChange = (questionId: number, option: string) => {
+  const handleAnswerChange = (questionId: number, option: string): void => {
     setUserAnswers((prev) => ({
       ...prev,
       [questionId]: prev[questionId] ? [...prev[questionId], option] : [option],
@@ -81,11 +84,14 @@ const TestPage: React.FC = () => {
       }
     });
 
-    return { correct, wrong, skipped, score: correct * 10 }; // Assuming each correct answer gives 10 points
+    return { correct, wrong, skipped, score: correct * 10 };
   };
 
+  const handleSubmit = (): void => {
+    onOpen();
+  };
 
-  const handleSubmit = () => {
+  const confirmSubmit = (): void => {
     stopTimer();
     const { correct, wrong, skipped, score } = calculateResults();
     const results = {
@@ -95,21 +101,20 @@ const TestPage: React.FC = () => {
       skipped,
       timeTaken: formatTime(totalTimeTaken),
     };
-    console.log("Setting results:", results);
     setResults(results);
+    onClose();
     navigate('/results');
   };
 
-
-  if (questions.length === 0) {
-    return <div>No questions available for the selected category.</div>;
-  }
-
-  const formatTime = (seconds: number) => {
+  const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
+
+  if (questions.length === 0) {
+    return <div>Loading questions...</div>;
+  }
 
   return (
     <div className="test-page">
@@ -142,7 +147,11 @@ const TestPage: React.FC = () => {
               ))}
             </ul>
             <div className="button-container">
-              <button className="exit-button" onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
+              <button 
+                className="exit-button" 
+                onClick={handlePreviousQuestion} 
+                disabled={currentQuestionIndex === 0}
+              >
                 Previous
               </button>
               {currentQuestionIndex < questions.length - 1 ? (
@@ -174,6 +183,23 @@ const TestPage: React.FC = () => {
           © Copyright Clinical Scholar | Powered by Quinoid Business Solutions
         </div>
       </footer>
+      
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalContent>
+          <ModalHeader className="flex flex-col gap-1">Confirm Submission</ModalHeader>
+          <ModalBody>
+            <p>Are you sure you want to submit your answers and move to the results page?</p>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="danger" variant="light" onPress={onClose}>
+              Cancel
+            </Button>
+            <Button color="primary" onPress={confirmSubmit}>
+              Submit
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 };
