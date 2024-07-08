@@ -1,0 +1,113 @@
+[
+    {
+      "category": "physics",
+      "question": "What is the SI unit of electric current?",
+      "options": [
+        {"id": 1, "value": "Ampere"},
+        {"id": 2, "value": "Volt"},
+        {"id": 3, "value": "Ohm"},
+        {"id": 4, "value": "Watt"}
+      ],
+      "correct_option": 1
+    },
+    {
+      "category": "history",
+      "question": "Who was the first President of the United States?",
+      "options": [
+        {"id": 5, "value": "Thomas Jefferson"},
+        {"id": 6, "value": "George Washington"},
+        {"id": 7, "value": "Abraham Lincoln"},
+        {"id": 8, "value": "John Adams"}
+      ],
+      "correct_option": 6
+    },
+    {
+      "category": "arts",
+      "question": "Who painted the Mona Lisa?",
+      "options": [
+        {"id": 9, "value": "Michelangelo"},
+        {"id": 10, "value": "Leonardo da Vinci"},
+        {"id": 11, "value": "Pablo Picasso"},
+        {"id": 12, "value": "Vincent van Gogh"}
+      ],
+      "correct_option": 10
+    },
+    {
+      "category": "sports",
+      "question": "Which sport is known as 'The Beautiful Game'?",
+      "options": [
+        {"id": 13, "value": "Basketball"},
+        {"id": 14, "value": "Football"},
+        {"id": 15, "value": "Tennis"},
+        {"id": 16, "value": "Golf"}
+      ],
+      "correct_option": 14
+    },
+    {
+      "category": "science",
+      "question": "What is the chemical symbol for water?",
+      "options": [
+        {"id": 17, "value": "H"},
+        {"id": 18, "value": "O"},
+        {"id": 19, "value": "H2O"},
+        {"id": 20, "value": "HO"}
+      ],
+      "correct_option": 19
+    },
+    {
+      "category": "history",
+      "question": "Which war was fought between the North and the South in the United States?",
+      "options": [
+        {"id": 21, "value": "Revolutionary War"},
+        {"id": 22, "value": "World War I"},
+        {"id": 23, "value": "Civil War"},
+        {"id": 24, "value": "Vietnam War"}
+      ],
+      "correct_option": 23
+    },
+    {
+      "category": "sports",
+      "question": "In which sport would you perform a slam dunk?",
+      "options": [
+        {"id": 25, "value": "Baseball"},
+        {"id": 26, "value": "Soccer"},
+        {"id": 27, "value": "Basketball"},
+        {"id": 28, "value": "Golf"}
+      ],
+      "correct_option": 27
+    },
+    {
+      "category": "arts",
+      "question": "Who wrote the play 'Romeo and Juliet'?",
+      "options": [
+        {"id": 29, "value": "William Shakespeare"},
+        {"id": 30, "value": "Charles Dickens"},
+        {"id": 31, "value": "Jane Austen"},
+        {"id": 32, "value": "Mark Twain"}
+      ],
+      "correct_option": 29
+    },
+    {
+      "category": "science",
+      "question": "What is the largest planet in our solar system?",
+      "options": [
+        {"id": 33, "value": "Mars"},
+        {"id": 34, "value": "Venus"},
+        {"id": 35, "value": "Jupiter"},
+        {"id": 36, "value": "Saturn"}
+      ],
+      "correct_option": 35
+    },
+    {
+      "category": "history",
+      "question": "Who was the first man to walk on the moon?",
+      "options": [
+        {"id": 37, "value": "Neil Armstrong"},
+        {"id": 38, "value": "Buzz Aldrin"},
+        {"id": 39, "value": "Michael Collins"},
+        {"id": 40, "value": "Yuri Gagarin"}
+      ],
+      "correct_option": 37
+    }
+  ]
+  

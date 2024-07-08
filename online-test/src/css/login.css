@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh !important; 
+}
+
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.loginImage{
+  width: 100%;
+}
+
+.left-side {
+  display: none;
+  width: 50%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.left-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(17, 24, 39, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+}
+
+.logo {
+  color: white;
+  font-size: 2.25rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.logo svg {
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+}
+
+.right-side {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 40px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.form-title h2 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #111827;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 8px 16px;
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #4f46e5;
+}
+
+.toggle-form {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.875rem;
+}
+
+.toggle-form button {
+  color: #6366f1;
+  background: none;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.toggle-form button:hover {
+  color: #4f46e5;
+}
+
+@media (min-width: 1024px) {
+  .left-side {
+    display: block;
+  }
+
+  .right-side {
+    width: 50%;
+  }
+}

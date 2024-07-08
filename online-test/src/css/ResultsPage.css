@@ -1,0 +1,168 @@
+/* ResultPage.css */
+.result-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  header, footer {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .exam-category {
+    font-size: 16px;
+  }
+  
+  .header-icons .icon {
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  main {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .result-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+  }
+  
+  .score-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .score-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .total-score {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .other-scores {
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .score-item {
+    text-align: center;
+  }
+  
+  .gauge-chart {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  
+  .circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 250px;
+  }
+  
+  .circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+  }
+  
+  .circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+  }
+  
+  .circular-chart.blue .circle {
+    stroke: #3c9ee5;
+  }
+  
+  .circular-chart.green .circle {
+    stroke: #4cc790;
+  }
+  
+  .circular-chart.red .circle {
+    stroke: #e53c3c;
+  }
+  
+  .circular-chart.gray .circle {
+    stroke: #999999;
+  }
+  
+  .percentage {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 0.5em;
+    text-anchor: middle;
+  }
+  
+  .notes-section {
+    margin-top: 20px;
+  }
+  
+  .notes-content {
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    min-height: 100px;
+    margin-top: 10px;
+  }
+  
+  .exit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e0e0e0;
+    padding: 10px 20px;
+  }
+  
+  .social-icons .icon {
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  @keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
