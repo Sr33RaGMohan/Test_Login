@@ -8,6 +8,10 @@ interface UserAnswers {
   [key: number]: string[];
 }
 
+interface NotepadValues {
+  [key: number]: string;
+}
+
 const TestPage: React.FC = () => {
   const { category, setResults } = useAppContext();
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -18,6 +22,7 @@ const TestPage: React.FC = () => {
   const [totalTimeTaken, setTotalTimeTaken] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
+  const [notePadValues,setNotepadValues] = useState<NotepadValues>({});
 
   useEffect(() => {
     const loadQuestions = async () => {
@@ -61,7 +66,7 @@ const TestPage: React.FC = () => {
   const handleAnswerChange = (questionId: number, option: string): void => {
     setUserAnswers((prev) => ({
       ...prev,
-      [questionId]: prev[questionId] ? [...prev[questionId], option] : [option],
+      [questionId]:  [option],
     }));
   };
 
@@ -90,6 +95,13 @@ const TestPage: React.FC = () => {
     setIsModalOpen(true);
   };
 
+  const handleNotepadChange = (questionId: number, value: string): void => {
+    setNotepadValues((prev) => ({
+      ...prev,
+      [questionId]: value,
+    }));
+  };
+
   const confirmSubmit = (): void => {
     stopTimer();
     const { correct, wrong, skipped, score } = calculateResults();
@@ -99,6 +111,7 @@ const TestPage: React.FC = () => {
       wrong,
       skipped,
       timeTaken: formatTime(totalTimeTaken),
+      notes:notePadValues,
     };
     setResults(results);
     setIsModalOpen(false);
@@ -167,8 +180,13 @@ const TestPage: React.FC = () => {
         </div>
         <div className="notepad">
           <h3>Notepad</h3>
-          <div className="notepad-placeholder">Your scribble notes here...</div>
-        </div>
+          <textarea
+            className="notepad-input"
+            value={notePadValues[currentQuestionIndex] || ''}
+            onChange={(e) => handleNotepadChange(currentQuestionIndex, e.target.value)}
+            placeholder="Your scribble notes here..."
+          />
+          </div>
       </main>
       <footer>
         <div className="logo">CLINICAL SCHOLAR</div>
