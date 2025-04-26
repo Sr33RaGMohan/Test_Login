@@ -22,7 +22,7 @@ const AuthForm = () => {
     }
 
     if (!isLogin && password !== confirmPassword) {
-      setError('Passwords do not match.');
+      setError('Passwords do not match !!');
       return;
     }
 
@@ -46,7 +46,7 @@ const AuthForm = () => {
       <div className="left-side">
         <img src={LoginPage} alt="" className="loginImage" />
       </div>
-      
+
       <div className="right-side">
         <div className="form-container">
           <div className="form-title">
